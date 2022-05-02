@@ -1,7 +1,5 @@
-import express from "express";
-import cors from "cors";
+const express = require("express");
 const app = express();
-app.use(cors());
 app.use(express.static("./public"));
 const args = require('minimist')(process.argv.slice(2))
 args['port']
