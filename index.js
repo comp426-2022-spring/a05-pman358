@@ -1,4 +1,3 @@
-import { coinFlip, coinFlips, countFlips, flipACoin } from "./coin.mjs";
 import express from "express";
 import cors from "cors";
 const app = express();
@@ -38,6 +37,46 @@ app.get('/app/flip/call/tails', (req, res) => {
 })
 
 
-app.use(function (req, res) {
-  res.status(404).send("404 NOT FOUND");
-});
+function coinFlip() {
+    return (Math.floor(Math.random() * 2) == 0) ? 'heads' : 'tails';
+}
+
+function coinFlips(flips) {
+    let flippedCoins = [];
+    if(flips < 1 || typeof flips == 'undefined'){
+      flips = 1
+    }
+    for(let i=0; i<flips; i++) {
+      flippedCoins.push(coinFlip())
+    }
+    return flippedCoins
+}
+
+function countFlips(array) {
+    let head = 0;
+    let tail = 0;
+    for(let i=0; i < array.length; i++) {
+      if(array[i] == 'heads') {
+        head++;
+      }
+      else {tail++;}
+    }
+    return {heads: head, tails: tail}
+}
+
+function flipACoin(call) {
+    let result = coinFlip()
+    let guess = ' '
+    if(result == call) {
+      guess = 'win' 
+    }
+    else {
+      guess = 'lose' 
+    }
+    return {call: call, flip: result, result: guess}
+}
+
+app.use(function(req, res) {
+    res.status(404).send("404 NOT FOUND")
+    res.type("text/plain")
+})
