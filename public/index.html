@@ -33,17 +33,35 @@
       <button id="guessnav">Guess the result</button>
     </nav>
     <div id="home">
-      
+      <h1>Flip some coins!</h1>
+      <p>Play using the buttons to either flip one coin, multiple coins, or guess the results of a coin flip.</p>
     </div>    
     <div id="single" class="hidden">
-      
+      <img id="one_flip_img"src="assets/img/coin.png" style="width: 50px">
+      <button id="one_flip_button">flip?</button>
+      <p>Result: <span id="result1"></span></p>
     </div>
     <div id="multi" class="hidden">
       
+      <p>How many coins?</p>
+      <input id="input"type="text" name="many">
+      <button id="submit"type="submit">flip</button>
+      <p>Heads: <span id="result2_heads"></span></p>
+      <img  src="assets/img/heads.png" style="width: 50px">
+      <p>Tails: <span id="result2_tails"></span></p>
+      <img src="assets/img/tails.png" style="width: 50px">
+
     </div>
     <div id="guess" class="hidden">
       
+      <img id= "guess_flip_img"src="assets/img/coin.png" style="width: 50px">
+
+      <p>Heads or tails?</p>
+      <button id="heads_guess">Heads</button>
+      <button id="tails_guess">Tails</button>
+      <p>Result: <span id="result3"></span></p>
+
     </div>
-	<script src="main.js"></script>
+	  <script src="main.js"></script>
   </body>
 </html>
